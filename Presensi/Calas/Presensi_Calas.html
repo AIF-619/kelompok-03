@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Presensi Asisten</title>
+</head>
+
+<body onload="initClock()">
+    <header>
+        <h2 class="logo">ICT</h2>
+        <nav>
+            <ul class="nav_links">
+                <li class="linavbar"><a href="../Asisten/Presensi_Asisten.html">Presensi Asisten</a></li>
+                <li class="linavbar"><a href="../Calas/Presensi_Calas.html">Presensi CALAS</a></li>
+            </ul>
+        </nav>
+        <div class="dropdown">
+            <a href="#" class="cta">
+                <button class="tombol_admin">
+                    Admin <i class="gg-chevron-down"></i>
+                </button>
+            </a>
+            <div class="dropdown-content">
+                <a href="/Super Admin Panel/admin_login.html">Super Admin</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="digital_clock">
+            <div class="datetime">
+                <div class="date">
+                    <span id="dayname">Day</span>
+                    <span id="month">Month</span>
+                    <span id="daynum">00</span>
+                    <span id="year">Year</span>
+                </div>
+                <div class="time">
+                    <span id="hour">00</span>:
+                    <span id="minutes">00</span>:
+                    <span id="seconds">00</span>
+                    <span id="period">AM</span>
+                </div>
+            </div>
+        </div>
+        <div class="div-button">
+            <a href="../Calas/List_nama/list_nama.html" class="a-button" style="--clr:#0088a9">
+                <span>Presensi</span>
+                <i class="gg-math-plus"></i>
+            </a>
+        </div>
+        <div class="main_second">
+            <div class="table">
+                <section class="table__header">
+                    <h1>Presensi CALAS</h1>
+                </section>
+                <section class="table__body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>NIM</th>
+                                <th>Nama</th>
+                                <th>Angkatan</th>
+                                <th>Jam Masuk</th>
+                                <th>Jumlah Telat</th>
+                                <th>Jam Keluar</th>
+                                <th class="head_status">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <a href="#" class="presensi-pulang">
+                                <tr>
+                                    <td>1</td>
+                                    <td>221150073</td>
+                                    <td>Almas Fahriza</td>
+                                    <td>2022</td>
+                                    <td>07:17</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>
+                                        <p class="status tepat_waktu">Hadir</p>
+                                    </td>
+                                </tr>
+                            </a>
+                            <a href="#">
+                                <tr>
+                                    <td>2</td>
+                                    <td>231100553</td>
+                                    <td>Muhammad Rifqi Fauzan</td>
+                                    <td>2023</td>
+                                    <td>07:20</td>
+                                    <td>--</td>
+                                    <td>17:00</td>
+                                    <td>
+                                        <p class="status tepat_waktu">Hadir</p>
+                                    </td>
+                                </tr>
+                            </a>
+                            <a href="#">
+                                <tr>
+                                    <td>3</td>
+                                    <td>234400912</td>
+                                    <td>Farand Effraim Karamoy</td>
+                                    <td>2023</td>
+                                    <td>07:49</td>
+                                    <td>150 <p>Menit</p>
+                                    </td>
+                                    <td>--</td>
+                                    <td>
+                                        <p class="status telat">Telat</p>
+                                    </td>
+                                </tr>
+                            </a>
+                            <a href="#">
+                                <tr>
+                                    <td>4</td>
+                                    <td>234500589</td>
+                                    <td>Ahmad Taufan Hidayat</td>
+                                    <td>2023</td>
+                                    <td>08:35</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>
+                                        <p class="status telat">telat</p>
+                                    </td>
+                                </tr>
+                            </a>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+
+    </main>
+
+    <script type="text/javascript">
+        function updateClock() {
+            var now = new Date();
+            var dname = now.getDay(),
+                mo = now.getMonth(),
+                dnum = now.getDate(),
+                yr = now.getFullYear(),
+                hou = now.getHours(),
+                min = now.getMinutes(),
+                sec = now.getSeconds()
+            pe = "AM";
+
+            Number.prototype.pad = function (digits) {
+                for (var n = this.toString(); n.length < digits; n = 0 + n);
+                return n;
+            }
+
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Desember"];
+            var week = ["Sunday,", "Monday,", "Tuesday,", "Wednesday,", "Thursday,", "Friday,", "Saturday,"];
+            var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+            var values = [week[dname], months[mo], dnum.pad(2), yr.pad(2), hou.pad(2), min.pad(2), sec.pad(2)];
+            for (var i = 0; i < ids.length; i++)
+                document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+
+        }
+
+        function initClock() {
+            updateClock();
+            window.setInterval("updateClock()", 1)
+        }
+
+
+    </script>
+</body>
+
+</html>
